@@ -1,0 +1,3456 @@
+{
+  "name": "Rapider Application Error Tracking",
+  "key": "application-error-tracking",
+  "domainKey": "DEV",
+  "appSuite": {
+    "key": "DEV",
+    "title": "Rapider Developer Suite"
+  },
+  "type": "App",
+  "description": "Application Error Tracking enterprise microapplication in the Rapider Developer Suite.",
+  "isPublic": true,
+  "tags": [
+    "dev",
+    "application-error-tracking",
+    "top-200"
+  ],
+  "iconUrl": "fas fa-code",
+  "icon": "fas fa-code",
+  "route": "application-error-tracking",
+  "rating": 5,
+  "reviewCount": 0,
+  "status": "app-metadata-completed",
+  "coverPage": "<!-- Rapider Official App SOW & Specification | App #104: Application Error Tracking (application-error-tracking) | Domain: DEV -->\n\n# #104 Application Error Tracking (`application-error-tracking`) — Scope of Work (SOW)\n\n- **App Number & Name:** `#104 Application Error Tracking`\n- **Proposed App Key:** `application-error-tracking`\n- **Domain / Suite & Model Prefix:** `DEV` (`Dev*`) — Category `11. Software Development & DevOps`\n- **Representative Benchmark (`P1`):** `Sentry`\n- **Combined Feature Catalog:** [../combined-features/104-application-error-tracking-features.md](../combined-features/104-application-error-tracking-features.md)\n\n---\n\n## 1. Executive Outcome & Target Audience\n\n**Application Error Tracking (`application-error-tracking`)** gives software engineering, mobile, frontend, backend, and SRE teams a real-time, code-level crash and exception intelligence hub inside the Rapider `DEV` suite. Instead of sifting through terabytes of unstructured raw text logs after customers complain, developers capture unhandled exceptions, panics, rejected promises, and mobile ANR/OOM crashes with full symbolicated stack traces, chronological pre-crash breadcrumbs, error-triggered DOM replay references, suspect commit attribution, and quantified release stability scores.\n\n- **SME & Startup Fast-Path:** A 5-person product team creates a `DevErrorService`, copies a single DSN snippet into their web/mobile/API app, and immediately gets out-of-the-box stack deduplication, automatic PII scrubbing, release crash-free tracking, and one-click bug creation in Rapider Planning (`ApmIssue`)—with zero custom fingerprinting or query rules required.\n- **Enterprise Progressive Disclosure:** Multi-squad organizations unlock declarative server-side `DevGroupingRule` fingerprinting, `CODEOWNERS`-driven `DevOwnershipRule` routing, release stability gates (`targetStabilityThreshold` / `criticalStabilityThreshold`), cross-service OpenTelemetry `traceId` correlation, automated `#105` feature-flag kill-switch hooks, and SOC2/HIPAA/GDPR field-level redaction policies.\n- **Measurable Business & Engineering Outcomes:**\n  1. Reduce Mean Time to Resolution (MTTR) for production application exceptions by **50%–70%** via symbolicated stack frames, breadcrumbs, and suspect commits.\n  2. Achieve **99.5%+ Crash-Free Session Rates** on web and mobile releases by gating phased rollouts on real-time `DevReleaseHealth` stability scores.\n  3. Eliminate **95%+ alert fatigue** by deduplicating millions of repetitive exception occurrences into canonical `DevErrorIssue` records with conditional snooze and velocity thresholds.\n- **Top 6 Global Benchmarks Synthesized (`P1`–`P6`):** `Sentry` (`P1` — Representative Product), `Datadog Error Tracking` (`P2`), `BugSnag` (`P3`), `Rollbar` (`P4`), `Microsoft Azure Application Insights` (`P5`), and `ServiceNow Cloud Observability / Lightstep` (`P6`).\n\n---\n\n## 2. In-Scope, Out-of-Scope & Suite Ownership Boundaries\n\n### In-Scope\n- Provisioning application/service DSNs, scoped ingestion keys, CORS origin allowlists, inbound spike quotas, and server-side PII/secret scrubbing policies (`AET-001`, `AET-004`, `AET-005`).\n- Ingesting structured exception envelopes (web, backend, mobile ANR/OOM), uploading release debug symbols/source maps to Platform Files, and symbolicating stack frames (`AET-002`, `AET-003`, `AET-006`).\n- Deterministic & custom stack-trace fingerprinting, issue deduplication, merge/unmerge, triage state machine (`UNRESOLVED`, `FOR_REVIEW`, `RESOLVED`, `IGNORED`), automatic regression detection, and conditional snooze rules (`AET-007`–`AET-012`).\n- Diagnostic inspection of chronological breadcrumbs, sanitized runtime/request context, W3C `traceId`/`spanId` links, error-triggered DOM session replay references, and user crash feedback (`AET-013`–`AET-016`, `AET-025`).\n- Release Health crash-free user/session stability scoring, suspect commit attribution, cron/job check-in monitoring, alert rules, and grounded AI root-cause/fix proposals (`AET-017`–`AET-024`, `AET-026`–`AET-028`).\n\n### Out-of-Scope\n- Full host/container CPU, memory, disk, Kubernetes, and network infrastructure metrics (owned by `#083 Cloud Infrastructure Monitoring`).\n- High-volume unstructured operational syslog archiving and SIEM threat correlation (owned by log management / security suites).\n- Agile sprint planning, story points, velocity charts, and general backlog management (owned by `APM` / `planning`).\n- Customer support omnichannel ticketing and SLA timers (owned by `SUP` / `support`).\n- Hosting or executing feature flag SDK evaluation engines (owned by `#105 Feature Flag Management`).\n\n### Cross-Suite Ownership & Integration Contract\n\n| Domain / App | Owns (Canonical System of Record) | Integration Contract with `#104` (`application-error-tracking`) |\n| :--- | :--- | :--- |\n| **`#104` (`application-error-tracking`)** | `DevErrorService`, `DevErrorIssue`, `DevErrorEvent`, `DevSymbolArtifact`, `DevReleaseHealth`, `DevGroupingRule`, ",
+  "scopeOfWork": "<!-- Rapider Official App SOW & Specification | App #104: Application Error Tracking (application-error-tracking) | Domain: DEV -->\n\n# #104 Application Error Tracking (`application-error-tracking`) — Scope of Work (SOW)\n\n- **App Number & Name:** `#104 Application Error Tracking`\n- **Proposed App Key:** `application-error-tracking`\n- **Domain / Suite & Model Prefix:** `DEV` (`Dev*`) — Category `11. Software Development & DevOps`\n- **Representative Benchmark (`P1`):** `Sentry`\n- **Combined Feature Catalog:** [../combined-features/104-application-error-tracking-features.md](../combined-features/104-application-error-tracking-features.md)\n\n---\n\n## 1. Executive Outcome & Target Audience\n\n**Application Error Tracking (`application-error-tracking`)** gives software engineering, mobile, frontend, backend, and SRE teams a real-time, code-level crash and exception intelligence hub inside the Rapider `DEV` suite. Instead of sifting through terabytes of unstructured raw text logs after customers complain, developers capture unhandled exceptions, panics, rejected promises, and mobile ANR/OOM crashes with full symbolicated stack traces, chronological pre-crash breadcrumbs, error-triggered DOM replay references, suspect commit attribution, and quantified release stability scores.\n\n- **SME & Startup Fast-Path:** A 5-person product team creates a `DevErrorService`, copies a single DSN snippet into their web/mobile/API app, and immediately gets out-of-the-box stack deduplication, automatic PII scrubbing, release crash-free tracking, and one-click bug creation in Rapider Planning (`ApmIssue`)—with zero custom fingerprinting or query rules required.\n- **Enterprise Progressive Disclosure:** Multi-squad organizations unlock declarative server-side `DevGroupingRule` fingerprinting, `CODEOWNERS`-driven `DevOwnershipRule` routing, release stability gates (`targetStabilityThreshold` / `criticalStabilityThreshold`), cross-service OpenTelemetry `traceId` correlation, automated `#105` feature-flag kill-switch hooks, and SOC2/HIPAA/GDPR field-level redaction policies.\n- **Measurable Business & Engineering Outcomes:**\n  1. Reduce Mean Time to Resolution (MTTR) for production application exceptions by **50%–70%** via symbolicated stack frames, breadcrumbs, and suspect commits.\n  2. Achieve **99.5%+ Crash-Free Session Rates** on web and mobile releases by gating phased rollouts on real-time `DevReleaseHealth` stability scores.\n  3. Eliminate **95%+ alert fatigue** by deduplicating millions of repetitive exception occurrences into canonical `DevErrorIssue` records with conditional snooze and velocity thresholds.\n- **Top 6 Global Benchmarks Synthesized (`P1`–`P6`):** `Sentry` (`P1` — Representative Product), `Datadog Error Tracking` (`P2`), `BugSnag` (`P3`), `Rollbar` (`P4`), `Microsoft Azure Application Insights` (`P5`), and `ServiceNow Cloud Observability / Lightstep` (`P6`).\n\n---\n\n## 2. In-Scope, Out-of-Scope & Suite Ownership Boundaries\n\n### In-Scope\n- Provisioning application/service DSNs, scoped ingestion keys, CORS origin allowlists, inbound spike quotas, and server-side PII/secret scrubbing policies (`AET-001`, `AET-004`, `AET-005`).\n- Ingesting structured exception envelopes (web, backend, mobile ANR/OOM), uploading release debug symbols/source maps to Platform Files, and symbolicating stack frames (`AET-002`, `AET-003`, `AET-006`).\n- Deterministic & custom stack-trace fingerprinting, issue deduplication, merge/unmerge, triage state machine (`UNRESOLVED`, `FOR_REVIEW`, `RESOLVED`, `IGNORED`), automatic regression detection, and conditional snooze rules (`AET-007`–`AET-012`).\n- Diagnostic inspection of chronological breadcrumbs, sanitized runtime/request context, W3C `traceId`/`spanId` links, error-triggered DOM session replay references, and user crash feedback (`AET-013`–`AET-016`, `AET-025`).\n- Release Health crash-free user/session stability scoring, suspect commit attribution, cron/job check-in monitoring, alert rules, and grounded AI root-cause/fix proposals (`AET-017`–`AET-024`, `AET-026`–`AET-028`).\n\n### Out-of-Scope\n- Full host/container CPU, memory, disk, Kubernetes, and network infrastructure metrics (owned by `#083 Cloud Infrastructure Monitoring`).\n- High-volume unstructured operational syslog archiving and SIEM threat correlation (owned by log management / security suites).\n- Agile sprint planning, story points, velocity charts, and general backlog management (owned by `APM` / `planning`).\n- Customer support omnichannel ticketing and SLA timers (owned by `SUP` / `support`).\n- Hosting or executing feature flag SDK evaluation engines (owned by `#105 Feature Flag Management`).\n\n### Cross-Suite Ownership & Integration Contract\n\n| Domain / App | Owns (Canonical System of Record) | Integration Contract with `#104` (`application-error-tracking`) |\n| :--- | :--- | :--- |\n| **`#104` (`application-error-tracking`)** | `DevErrorService`, `DevErrorIssue`, `DevErrorEvent`, `DevSymbolArtifact`, `DevReleaseHealth`, `DevGroupingRule`, `DevOwnershipRule`, `DevErrorAlertRule` | Exposes error triage states, release stability scores, and Kafka events (`dev.error.issue.regressed`, `dev.error.stability.breached`). |\n| **`APM` (`planning` / `apm`)** | `ApmProject`, `ApmEpic`, `ApmSprint`, `ApmIssue` | `#104` links `DevErrorIssue.linkedApmIssueId` to canonical `ApmIssue`; closing the `ApmIssue` emits an event that transitions `DevErrorIssue` to `RESOLVED_IN_NEXT_RELEASE`. |\n| **`SUP` (`support`)** | `SupCustomer`, `SupTicket`, `SupSlaPolicy` | `#104` stores optional `SupTicket` references on `DevErrorIssue` so customer-reported crashes reflect engineering fix progress without duplicating tickets. |\n| **`#105` (`feature-flag-management`)** | `DevFeatureFlag`, `DevFlagEnvironmentRule` | `DevErrorEvent` records evaluated flag keys/variants in context; critical crash spikes on a flagged release emit an event / Home `WorkItem` proposing kill-switch disablement in `#105`. |\n| **`#106` (`automated-software-testing`)** | `DevTestCase`, `DevTestRun` | Grounded AI reproduction steps (`AET-027`/`AET-028`) can hand off a draft regression test specification to `#106`. |\n| **Platform Core Services** | Identity/RBAC, Files/Drive, Notebooks, Home `WorkItem`s, `projectChannelMessage` | Binary source maps/dSYMs and masked replay segments reside in Platform Files; critical release gate breaches create Home `WorkItem`s; AI & team triage chats run on `projectChannelMessage`. |\n\n---\n\n## 3. Primary Web Pages & Sidebar Navigation Architecture (12 Pages)\n\nEvery visible sidebar section strictly enforces the **Minimum 3 Items Rule** (`Overview & Triage` = 3 items, `Releases & Services` = 3 items, `Governance & Rules` = 3 items; detail and drawer routes set `displayOnMenu: false`).\n\n| # | Route | Page Title | Sidebar Section | Menu Visible | Key Components & UX Standards |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| 1 | `dashboard` | Error Pulse & Stability Overview | `Overview & Triage` | `true` (Order 1) | KPI cards (`countSWR`/`findSWR`) for Unresolved Issues, 24h Events, Crash-Free Session %, Regressions; top noisy services chart; recent critical alerts list. |\n| 2 | `issues` | Issue Triage Inbox | `Overview & Triage` | `true` (Order 2) | Dual List + `<rapider-kanban>` Triage Board (`UNRESOLVED`, `FOR_REVIEW`, `RESOLVED`, `IGNORED`); `#activeFilterTagsBar` with `Clear all`; clickable primary issue title (`issue-detail`); bulk Resolve/Snooze/Merge toolbar. |\n| 3 | `analytics` | Error Explorer & Job Monitors | `Overview & Triage` | `true` (Order 3) | Tag facet distribution explorer, error velocity time-series charts, cron/scheduled job check-in status table (`AET-024`), and Save-to-Notebook export. |\n| 4 | `releases` | Release Health & Stability | `Releases & Services` | `true` (Order 4) | Version comparison matrix displaying `Decimal128` User & Session Stability Scores, adoption curves, new issues count, and target/critical gate badges; clicks through to `release-detail`. |\n| 5 | `services` | Monitored Services & DSNs | `Releases & Services` | `true` (Order 5) | Registry of `DevErrorService` apps (Web, API, iOS, Android), DSN copy widget, inbound quota meter, Edit (`icon + text`) and Delete (`icon-only`) row actions. |\n| 6 | `symbols` | Debug Symbols & Source Maps | `Releases & Services` | `true` (Order 6) | Release-scoped artifact table (`DevSymbolArtifact`) showing source map / dSYM / ProGuard bundle status, symbolication health check, and Platform Files upload trigger. |\n| 7 | `alerts` | Alert Rules & Escalations | `Governance & Rules` | `true` (Order 7) | `DevErrorAlertRule` table for first-seen, regression, velocity-spike, and stability-drop triggers with webhook, Home `WorkItem`, and `<rapider-phone-input>` SMS escalation targets. |\n| 8 | `grouping-ownership` | Fingerprinting & Ownership Rules | `Governance & Rules` | `true` (Order 8) | Tabbed governance editor for declarative `DevGroupingRule` fingerprint expressions and `CODEOWNERS`-style `DevOwnershipRule` auto-assignment mappings. |\n| 9 | `privacy-scrubbing` | PII Scrubbing & Spike Quotas | `Governance & Rules` | `true` (Order 9) | Workspace & per-service data redaction rules (credit cards, tokens, custom regexes, IP masking), inbound browser/bot filters, and immutable policy audit trail. |\n| 10 | `issue-detail` | Issue Diagnostic & Stack Trace | *(Hidden)* | `false` | Symbolicated stack frame accordion (in-app vs. framework toggle), breadcrumb timeline, tags/flags context, DOM replay viewer link, `ApmIssue`/`SupTicket` linker, and AI Seer thread (`projectChannelMessage`). |\n| 11 | `release-detail` | Release Stability Breakdown | *(Hidden)* | `false` | Version deep-dive with suspect commits list, new vs. regressed issues introduced in this release, environment adoption breakdown, and rollout gate status. |\n| 12 | `service-drawer` | Create / Edit Monitored Service | *(Hidden)* | `false` | Sliding form drawer for `DevErrorService` creation/editing; enforces `try/catch/finally` button state reset, SWR cache invalidation, broadcast, and auto-close on Save/Cancel. |\n\n**Mandatory Rapider UI Compliance across all 12 Pages:**\n- Initial loads exclusively call `window.rapiderApi.findSWR(entity, filter)` and `countSWR(entity, where)` with zero redundant `isDeleted` filter clauses; local state filters `item.isDeleted !== true` and executes optimistic UI updates on triage/edit/delete.\n- Data tables never render a standalone \"View\" button in `Actions`; clicking the primary identifier (`issueTitle`, `version`, `serviceName`, `ruleName`) navigates to detail; `Edit` uses `<i class=\"fas fa-edit mr-1\"></i><span>Edit</span>` and `Delete` uses icon-only `<i class=\"fas fa-trash-alt\"></i>` with `aria-label=\"Delete\"`.\n- Primary and destructive confirmation buttons enforce `#ffffff !important` text contrast; native `window.alert`, `window.confirm`, and `window.prompt` are strictly prohibited.\n\n---\n\n## 4. Canonical Data Models (`Dev*` — 8 Models)\n\nAll models omit `projectId` (resolved from authenticated Rapider host context), use backend-generated UUIDs (`00000000-xxxx-xxxx-xxxx-xxxxxxxxxxxx` in deterministic seed fixtures), include `version: number` for optimistic concurrency, and store precision ratios as `Decimal128`.\n\n| Model Name | Key Fields & Types | Relationships & External Refs | Invariants & Lifecycle |\n| :--- | :--- | :--- | :--- |\n| **`DevErrorService`** | `id` (UUID), `name` (String), `slug` (String), `platformType` (`WEB_JS` \\| `NODE` \\| `PYTHON` \\| `JAVA` \\| `GO` \\| `IOS` \\| `ANDROID` \\| `FLUTTER`), `dsnPublicKey` (String), `allowedOrigins` (String[]), `scrubPiiEnabled` (Boolean), `scrubPatterns` (String[]), `hourlyEventQuota` (Integer), `samplingRate` (`Decimal128`), `status` (`ACTIVE` \\| `PAUSED` \\| `ARCHIVED`), `version` (Integer) | Refs owner `userId` / `HrDepartment` via Platform Identity | `slug` unique per workspace; `scrubPiiEnabled` defaults `true`; rotating `dsnPublicKey` retains grace window if configured; `samplingRate` in `[0.0000, 1.0000]`. |\n| **`DevErrorIssue`** | `id` (UUID), `shortId` (String, e.g., `API-402`), `serviceId` (UUID), `fingerprintHash` (String), `exceptionType` (String), `title` (String), `culprit` (String), `level` (`FATAL` \\| `ERROR` \\| `WARNING` \\| `INFO`), `isUnhandled` (Boolean), `status` (`UNRESOLVED` \\| `FOR_REVIEW` \\| `RESOLVED` \\| `RESOLVED_IN_NEXT_RELEASE` \\| `IGNORED`), `snoozeUntil` (DateTime?), `snoozeOccurrenceLimit` (Integer?), `occurrenceCount` (Long), `affectedUserCount` (Long), `firstSeenAt` (DateTime), `lastSeenAt` (DateTime), `firstSeenRelease` (String?), `lastSeenRelease` (String?), `suspectCommitSha` (String?), `version` (Integer) | Belongs to `DevErrorService`; optional `assigneeUserId` (Platform Identity), `linkedApmIssueId` (`ApmIssue`), `linkedSupTicketIds` (`SupTicket[]`), `threadChannelId` (`projectChannelMessage`) | Unique `(serviceId, fingerprintHash)` while active; ingesting an event in a newer semantic release when `status = RESOLVED` automatically transitions `status -> UNRESOLVED` and increments `regressionCount`. |\n| **`DevErrorEvent`** | `id` (UUID), `eventId` (String), `issueId` (UUID), `serviceId` (UUID), `environment` (String), `releaseVersion` (String?), `occurredAt` (DateTime), `symbolicatedFrames` (JSON[]), `breadcrumbs` (JSON[]), `tags` (JSON), `runtimeContext` (JSON), `activeFlagVariants` (JSON?), `traceId` (String?), `spanId` (String?), `scrubbingApplied` (String[]), `userFeedbackNote` (String?) | Belongs to `DevErrorIssue` and `DevErrorService`; optional `replayRefId` (`DevSessionReplayRef`), `activeFlagVariants` refs `#105` keys | **Append-only immutable evidence** once persisted after PII scrubbing; raw unredacted secrets are never written to disk or event streams. |\n| **`DevSymbolArtifact`** | `id` (UUID), `serviceId` (UUID), `releaseVersion` (String), `artifactType` (`SOURCE_MAP` \\| `DSYM` \\| `PROGUARD` \\| `ELF_DWARF`), `bundleName` (String), `checksumSha256` (String), `fileId` (UUID), `frameCount` (Integer), `verificationStatus` (`VERIFIED` \\| `INVALID` \\| `EXPIRED`), `uploadedAt` (DateTime), `version` (Integer) | Belongs to `DevErrorService`; `fileId` refs canonical Rapider Platform Files/Drive | Immutable binary payload per `(serviceId, releaseVersion, bundleName, checksumSha256)`; deleting or expiring never mutates previously symbolicated `DevErrorEvent` records. |\n| **`DevReleaseHealth`** | `id` (UUID), `serviceId` (UUID), `environment` (String), `releaseVersion` (String), `totalSessions` (Long), `crashedSessions` (Long), `erroredSessions` (Long), `totalUsers` (Long), `crashedUsers` (Long), `crashFreeSessionRate` (`Decimal128`), `crashFreeUserRate` (`Decimal128`), `targetStabilityThreshold` (`Decimal128`), `criticalStabilityThreshold` (`Decimal128`), `gateStatus` (`HEALTHY` \\| `WARNING` \\| `CRITICAL_BREACH`), `deployedAt` (DateTime), `version` (Integer) | Belongs to `DevErrorService`; optional `commitRangeRef` (Git repo `#099`), `rolloutFlagId` (`#105` `DevFeatureFlag`) | `crashFreeSessionRate` and `crashFreeUserRate` computed with `Decimal128` precision (`0.0000`–`100.0000`); dropping below `criticalStabilityThreshold` transitions `gateStatus -> CRITICAL_BREACH` and emits a Home `WorkItem`. |\n| **`DevGroupingRule`** | `id` (UUID), `serviceId` (UUID), `name` (String), `priorityOrder` (Integer), `matchExpression` (String), `targetFingerprintTemplate` (String), `isActive` (Boolean), `matchedCount` (Long), `version` (Integer) | Belongs to `DevErrorService` | Evaluated deterministically in ascending `priorityOrder` during ingestion; applies prospectively to incoming events without rewriting historical event hashes unless explicit re-group command runs. |\n| **`DevOwnershipRule`** | `id` (UUID), `serviceId` (UUID), `priorityOrder` (Integer), `matcherType` (`PATH_GLOB` \\| `MODULE` \\| `TAG` \\| `URL_PATTERN`), `pattern` (String), `ownerType` (`USER` \\| `TEAM`), `ownerRefId` (UUID), `autoAssign` (Boolean), `isActive` (Boolean), `version` (Integer) | Belongs to `DevErrorService`; `ownerRefId` refs Platform Identity User or `HrDepartment` / Team | Validates `ownerRefId` exists in workspace RBAC before activation; highest-priority matching rule assigns `DevErrorIssue.assigneeUserId` when unassigned. |\n| **`DevErrorAlertRule`** | `id` (UUID), `serviceId` (UUID), `name` (String), `environment` (String), `triggerType` (`FIRST_SEEN` \\| `REGRESSION` \\| `VELOCITY_SPIKE` \\| `CRASH_FREE_DROP` \\| `CRON_MISSED`), `thresholdValue` (`Decimal128`), `windowMinutes` (Integer), `cooldownMinutes` (Integer), `createHomeWorkItem` (Boolean), `killSwitchFlagId` (UUID?), `notificationTargets` (JSON), `status` (`ENABLED` \\| `MUTED`), `lastTriggeredAt` (DateTime?), `version` (Integer) | Belongs to `DevErrorService`; optional `killSwitchFlagId` refs `#105` `DevFeatureFlag` | Deduplicates repeated firing within `cooldownMinutes`; SMS targets validated via `<rapider-phone-input>` E.164 format. |\n\n---\n\n## 5. Core End-to-End User Journeys\n\n1. **SME 3-Minute Onboarding & First Exception Triage:**\n   - Lead Developer opens `#/services`, clicks **New Monitored Service** (opens `service-drawer`), enters `Checkout API` (`NODE`), and saves (`DevErrorService` created, drawer auto-closes, table refreshes optimistically).\n   - Developer uploads `v1.4.0` source maps on `#/symbols` (`uploadSymbolArtifact`) and triggers a test exception.\n   - Navigating to `#/issues`, the developer sees `API-101: TypeError: Cannot read properties of undefined (reading 'taxRate')`, clicks the primary link to open `#/issue-detail?id=...`, inspects the symbolicated stack line (`pricingEngine.ts:84`) and pre-crash HTTP breadcrumbs, and clicks **Create APM Bug**—creating a linked `ApmIssue` in one click.\n2. **Release Stability Breach -> Home `WorkItem` -> Feature Flag Kill-Switch Handoff:**\n   - Mobile team ships `ios-app@3.2.0` behind feature flag `new-apple-pay-sheet`. Within 15 minutes, OOM/NSException crashes drop `DevReleaseHealth.crashFreeSessionRate` to `96.40%` (below `criticalStabilityThreshold = 98.50%`).\n   - `evaluateReleaseStability` transitions `gateStatus -> CRITICAL_BREACH`, fires `DevErrorAlertRule`, and publishes a shared Rapider Home `WorkItem` assigned to the Release Manager with a recommended action: *Disable flag `new-apple-pay-sheet` in `#105`*.\n   - Release Manager reviews `#/release-detail`, confirms the correlation in `activeFlagVariants`, and approves the guarded kill-switch action (`proposeFlagKillSwitch`), halting crashes within seconds.\n3. **Resolved Issue Regression Across Releases:**\n   - Engineer marks `API-101` as `RESOLVED_IN_NEXT_RELEASE` (`v1.4.1`). Deployment `v1.4.1` runs cleanly for 3 days, then `v1.5.0` re-introduces the bug.\n   - `ingestErrorEvent` detects `releaseVersion = 1.5.0 > 1.4.1` on a resolved fingerprint, transitions `API-101` back to `UNRESOLVED` (`REGRESSED`), attaches Suspect Commit `a94f21c`, re-notifies the owner via `DevOwnershipRule`, and reopens/comments on the linked `ApmIssue`.\n4. **Grounded AI Root-Cause Investigation (`projectChannelMessage`):**\n   - From `#/issue-detail`, an engineer clicks **Analyze with Rapider AI**. The backend gathers the already-scrubbed `DevErrorEvent` stack frames, breadcrumbs, and suspect commit diff, posting a grounded root-cause breakdown onto the issue's `projectChannelMessage` thread citing exact frame lines and proposing a null-guard unit test—never auto-committing code without human approval.\n5. **List Filtering, Click-Through Navigation & Back State Restoration:**\n   - On `#/issues`, a triager types `\"taxRate\"` into search and clicks filter pill `Environment: prod` + `Status: UNRESOLVED`. `#activeFilterTagsBar` renders `Search: \"taxRate\" ✕`, `Env: \"prod\" ✕`, `Status: \"UNRESOLVED\" ✕` and `[Clear all]`.\n   - Clicking `API-101` navigates cleanly to `#/issue-detail?id=...` (no `<base href>` 404 diversion). Clicking `#btnGoBack` returns to `#/issues` with the exact active filters, search query, and scroll/list state preserved; clicking `Clear all` resets all pills to `ALL` and restores the full dataset.\n\n---\n\n## 6. Consolidated Feature Priorities & Work Packages\n\n### `P0` Foundation (MVP Release-Ready Core)\n- **WP-P0-1: Service Provisioning, Ingestion & PII Scrubbing (`AET-001`–`AET-004`):** `DevErrorService`, `DevErrorEvent`, `DevSymbolArtifact` CRUD + guarded `ingestErrorEvent` and `uploadSymbolArtifact` commands; mandatory PII/token scrubber before persistence; `#/services`, `service-drawer`, `#/symbols`, `#/privacy-scrubbing`.\n- **WP-P0-2: Fingerprinting, Triage Inbox & Code Ownership (`AET-007`–`AET-012`):** Stack normalization, `DevErrorIssue` state machine, regression reopening, conditional snooze, merge/unmerge (`DevGroupingRule`), `CODEOWNERS` auto-assignment (`DevOwnershipRule`), `#/issues` (Table + `<rapider-kanban>` + `#activeFilterTagsBar`), `#/grouping-ownership`.\n- **WP-P0-3: Diagnostic Stack, Breadcrumbs & APM Linking (`AET-013`, `AET-014`, `AET-019`):** `#/issue-detail` symbolicated stack viewer, breadcrumb timeline, runtime/flag context inspector, and bi-directional `ApmIssue` creation/resolution sync.\n- **WP-P0-4: Release Stability Scores & Core Alerting (`AET-017`, `AET-022`):** `DevReleaseHealth` `Decimal128` crash-free calculators, `#/dashboard`, `#/releases`, `#/release-detail`, and `DevErrorAlertRule` evaluation (`#/alerts`).\n\n### `P1` Enterprise Scale & Observability Unification\n- **WP-P1-1: Mobile ANR/OOM & Inbound Spike Protection (`AET-005`, `AET-006`):** Inbound bot/browser filters, dynamic rate quotas, and mobile thermal/memory/ANR thread diagnostics.\n- **WP-P1-2: Trace Correlation & Error-Triggered Replay (`AET-015`, `AET-016`):** W3C `traceId`/`spanId` cross-linking and Platform Files-backed masked DOM session replay timeline synchronization on `#/issue-detail`.\n- **WP-P1-3: Suspect Commits, Support Escalation & Flag Kill-Switches (`AET-018`, `AET-020`, `AET-021`, `AET-023`):** Git commit blame correlation, `SupTicket` impact linking, Home `WorkItem` stability escalations, `#105` kill-switch webhook/event handoff, and `#/analytics` query explorer.\n\n### `P2` Adjacent Capabilities & Grounded AI\n- **WP-P2-1: Cron Check-In Monitors & Crash Feedback (`AET-024`, `AET-025`):** Scheduled worker heartbeat monitor table inside `#/analytics` and end-user crash report notes attached to `DevErrorEvent`.\n- **WP-P2-2: Seer-Style Grounded AI Triage & Regression Test Handoff (`AET-026`–`AET-028`):** Root-cause synthesis, breadcrumb/replay text summarization, and human-gated patch + `#106` regression test drafts over `projectChannelMessage`.\n\n---\n\n## 7. Roles, Permissions & Field-Level Governance\n\n| Role | Permitted Actions | Restricted / Field-Level Boundaries |\n| :--- | :--- | :--- |\n| **Developer / Triager** | View assigned & workspace `DevErrorIssue` / `DevErrorEvent` / `DevReleaseHealth`; transition triage states (`Resolve`, `Snooze`, `For Review`); link `ApmIssue` / `SupTicket`; upload `DevSymbolArtifact`; invoke AI RCA on `projectChannelMessage`. | Cannot weaken or disable PII scrubbing rules, delete `DevErrorService`, rotate production DSNs, or purge audit logs. |\n| **Release / Engineering Lead** | All Developer permissions + create/edit `DevErrorService`, rotate DSN keys, author `DevGroupingRule`, `DevOwnershipRule`, and `DevErrorAlertRule`, configure `Decimal128` stability thresholds, and approve Home `WorkItem` kill-switch actions. | Cannot disable workspace-mandated global compliance redaction patterns (`scrubPiiEnabled` floor set by Security Admin). |\n| **Support / QA Viewer** | Read-only access to `DevErrorIssue` summaries, triage status, affected release versions, and `SupTicket` / `ApmIssue` links; export sanitized reproduction steps to `#106`. | **Field-Level Restriction:** Raw `runtimeContext` headers, environment variables, IP metadata, and `dsnPublicKey` values are masked/hidden; zero mutation permissions on `Dev*` records. |\n| **Security & Governance Admin** | Configure mandatory workspace PII/secret scrubbing patterns (`#/privacy-scrubbing`), data retention TTLs, GDPR subject-erasure runs, and inbound quota caps; view full policy audit history. | Cannot fabricate or mutate immutable `DevErrorEvent` stack evidence (may only trigger audited GDPR PII tombstoning). |\n| **Scoped Ingestion / CI Identity** | Write-only `ingestErrorEvent`, `uploadSymbolArtifact`, and `recordReleaseDeployment` scoped strictly to the single `DevErrorService` matching its token. | Zero read access to stored issues, events, or workspace configuration. |\n\n---\n\n## 8. Technical APIs, Guarded Commands, Events & `requiredWorkflows`\n\n### Guarded Domain Commands (Beyond Standard SWR Reads)\nAll state-changing commands enforce `idempotencyKey` (UUID), `correlationId` (UUID), authenticated workspace RBAC, and `expectedVersion` optimistic concurrency:\n- `ingestErrorEvent(dsnKey, envelope, idempotencyKey)` -> Runs inbound filter -> PII scrubber -> symbolicator -> fingerprint matcher -> atomically upserts `DevErrorIssue` counters & regressions -> appends immutable `DevErrorEvent`.\n- `triageIssue(issueId, targetStatus, snoozeSpec?, resolutionRelease?, expectedVersion, idempotencyKey)` -> Validates state transition, updates `DevErrorIssue`, syncs linked `ApmIssue` if configured.\n- `mergeIssues(primaryIssueId, secondaryIssueIds[], customFingerprintRule?, expectedVersion, idempotencyKey)` -> Re-parents occurrence metrics and creates optional `DevGroupingRule`.\n- `uploadSymbolArtifact(serviceId, releaseVersion, artifactType, fileId, checksumSha256, idempotencyKey)` -> Validates symbol bundle structure in Platform Files and marks `VERIFIED`.\n- `evaluateReleaseStability(serviceId, environment, releaseVersion, sessionBatchMetrics, idempotencyKey)` -> Updates `Decimal128` crash-free rates, evaluates `criticalStabilityThreshold`, and emits Home `WorkItem` on breach.\n- `requestAiRootCause(issueId, eventId, channelId, idempotencyKey)` -> Dispatches grounded AI worker on scrubbed event snapshot.\n\n### Kafka Domain Events (Published & Consumed)\n- **Published:** `dev.error.issue.first_seen.v1`, `dev.error.issue.regressed.v1`, `dev.error.alert.triggered.v1`, `dev.error.release_stability.breached.v1`, `dev.error.killswitch.recommended.v1`. *(Strict rule: raw stack locals and unredacted user fields are excluded from Kafka payloads—only sanitized summaries and entity UUIDs are emitted).*\n- **Consumed:** `apm.issue.status_changed.v1` (auto-resolves linked `DevErrorIssue` when bug closes), `dev.deployment.completed.v1` (initializes `DevReleaseHealth` baseline), `dev.flag.toggled.v1` (annotates release timeline).\n\n### `requiredWorkflows` in `app.manifest.json`\n1. `dev-error-symbolication-and-grouping-wf` (Async OpenWhisk/Kafka symbolication of raw minified frames against `DevSymbolArtifact` + suspect commit lookup).\n2. `dev-error-alert-and-stability-gate-wf` (Evaluates velocity windows and `Decimal128` stability breaches, deduplicates cooldowns, creates Home `WorkItem`s, and dispatches webhooks).\n3. `dev-error-ai-seer-triage-wf` (Grounded AI root-cause & reproduction summarizer posting proposals to `projectChannelMessage`—strictly read-only against source repos, requiring human confirmation before creating any PR or `ApmIssue`).\n4. `dev-error-retention-purge-wf` (Scheduled TTL cleanup of expired `DevErrorEvent` occurrences and temporary replay blobs while preserving aggregated `DevErrorIssue` counters).\n\n---\n\n## 9. Security, Privacy, Compliance & Non-Functional Requirements\n\n- **Zero-Secret & PII Scrubbing by Default (GDPR / CCPA / HIPAA / SOC2):** Server-side scrubbing executes *prior* to database persistence and AI prompt construction, stripping `Authorization` headers, cookies, API keys, JWTs, SSNs, payment card PANs (Luhn check), and client IPs by default. Payloads containing translated or user-authored strings are treated strictly as untrusted data (preventing prompt injection in AI triage and XSS in UI rendering via `escapeHtml()`).\n- **Right to Erasure & Configurable Retention:** Supports targeted purge of `DevErrorEvent` records matching an external user identifier hash within statutory GDPR windows, alongside configurable retention tiers (e.g., 30 / 60 / 90 days for raw events; 365 days for aggregated `DevReleaseHealth`). Cost/quota estimator displays usage transparently (e.g., \\$0.00 overage surprises via deterministic inbound spike caps).\n- **Immutable Audit Trail:** All changes to `DevErrorService` scrubbing rules, DSN key rotations, `DevErrorAlertRule` thresholds, and manual issue merges write append-only platform audit records with actor identity, timestamp, and before/after diffs.\n- **Accessibility & Responsive Performance:** WCAG 2.2 AA compliant across `390px` (mobile on-call triage), `768px` (tablet), and `1440px` (desktop wide stack-trace inspector); keyboard-navigable stack frame accordions; `findSWR` cached inbox rendering `< 150ms` p95 and paginated API reads `< 400ms` p95.\n\n---\n\n## 10. Deterministic Acceptance Criteria\n\n1. **Zero `projectId` & Platform UUID Compliance:** Inspecting all 8 `Dev*` schemas confirms zero `projectId`/`tenantId` fields, backend-generated UUIDs on create, and `00000000-xxxx-xxxx-xxxx-xxxxxxxxxxxx` UUIDs in seed fixtures.\n2. **Pre-Persistence PII Scrubbing:** Submitting an error payload containing a `Bearer eyJ...` header, `password` field, and valid Luhn credit card number persists `[Filtered]` placeholders in `DevErrorEvent` and records applied scrubber names in `scrubbingApplied`.\n3. **Deterministic Deduplication & Regression Reopening:** Ingesting 50 occurrences of the same stack trace increments `DevErrorIssue.occurrenceCount` to `50` on a single issue; marking it `RESOLVED` in `v1.0.0` and ingesting a matching stack trace tagged `v1.1.0` automatically transitions `status` back to `UNRESOLVED` (`REGRESSED`).\n4. **Conditional Snooze Expiry:** Snoozing an issue with `snoozeOccurrenceLimit = 10` hides it from the default `UNRESOLVED` filter until the 10th new event arrives, at which point it deterministically returns to `UNRESOLVED`.\n5. **Exact `Decimal128` Stability Gate & Home `WorkItem`:** Recording `9,849` crash-free sessions out of `10,000` (`98.4900%`) against `criticalStabilityThreshold = 98.5000%` transitions `DevReleaseHealth.gateStatus` to `CRITICAL_BREACH` without float rounding error and creates a linked Rapider Home `WorkItem`.\n6. **Bi-Directional `ApmIssue` Contract:** Clicking **Create APM Bug** on `#/issue-detail` invokes the guarded command, populates `linkedApmIssueId`, and consuming `apm.issue.status_changed.v1` (`DONE`) transitions the `DevErrorIssue` to `RESOLVED_IN_NEXT_RELEASE`.\n7. **Sidebar Minimum 3 Items Rule:** Parsing `app.manifest.json` `webPages` confirms all 3 visible sidebar groups (`Overview & Triage`, `Releases & Services`, `Governance & Rules`) each contain exactly 3 visible items (`displayOnMenu: true`), while `issue-detail`, `release-detail`, and `service-drawer` set `displayOnMenu: false`.\n8. **SWR Clean Query & Optimistic Triage/Delete:** Every page mount uses `findSWR`/`countSWR` with zero `isDeleted` clauses in `where`; resolving or deleting a record updates local in-memory arrays and `<rapider-kanban>` synchronously, invalidates `sessionStorage` SWR keys, and rolls back cleanly on simulated API failure.\n9. **Table Action & Contrast Compliance:** No data table contains a \"View\" button in `Actions`; primary identifiers navigate to `#/issue-detail` or `#/release-detail`; `Edit` renders icon + text; `Delete` renders icon-only with tooltip/`aria-label`; all primary/danger buttons compute `#ffffff` text color; zero `window.alert`/`confirm`/`prompt` calls exist in source.\n10. **Active Filter Tags & Clear All:** Entering a search string or selecting environment/status pills on `#/issues` renders `#activeFilterTagsBar` with HTML-escaped dismissible chips and `Clear all`, synchronously updating both Table and `<rapider-kanban>` views.\n11. **Drawer Lifecycle & `finally` Button Reset:** Saving or cancelling `service-drawer` closes the drawer automatically, broadcasts `RECORD_CREATED`/`RECORD_UPDATED`, and restores the Save button inside a `finally` block so it never freezes on `\"Saving...\"`.\n12. **Real Click-Through & Back Restoration E2E:** Clicking an issue link on `#/issues` transitions to `#/issue-detail?id=...` without `<base href>` 404 diversion, renders the stack trace, and clicking `#btnGoBack` restores `#/issues` with active filters intact.\n13. **Grounded AI Safety Boundary:** Requesting AI root-cause analysis posts a citation-backed proposal on `projectChannelMessage` using only scrubbed `DevErrorEvent` data and never executes unconfirmed code changes or external provider calls when disabled by policy.\n14. **Responsive & Theme Parity:** Deterministic light/dark `validate_theme` checks and layout assertions pass with zero horizontal overflow or overlapping controls at `390px`, `768px`, and `1440px`.\n",
+  "thumbnailUrl": "",
+  "isolationScope": "ENTERPRISE_SHARED",
+  "dataModels": [
+    {
+      "name": "ApmEpic",
+      "title": "Epic",
+      "description": "A large body of work that can be broken down into smaller issues.",
+      "domainName": "Rapider Project & Portfolio Suite",
+      "domainKey": "APM",
+      "datatableName": "ApmEpic",
+      "dataTableName": "ApmEpic",
+      "sqlTableName": "apm_epic",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ title }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "title",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "title",
+            "projectId"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "description"
+          ],
+          "additionalPrompt": "Ensure the epic title clearly states the overarching feature or goal.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "An epic must belong to a valid project."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "projectId"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "When updating an epic's status to Done, suggest checking if all child issues are also Done.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "",
+          "restrictedStates": [
+            {
+              "description": "Cannot modify completed epics.",
+              "where": {}
+            }
+          ]
+        },
+        "entityRead": {
+          "defaultPageSize": 15,
+          "defaultContextLimit": 10,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Group epics by project when listing multiple."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [
+            "issues"
+          ],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete epics that have active issues.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "projectId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "project",
+          "type": "belongsTo",
+          "sourceModel": "ApmEpic",
+          "sourceField": "projectId",
+          "targetModel": "ApmProject",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The project this epic belongs to."
+        },
+        {
+          "name": "issues",
+          "type": "hasMany",
+          "sourceModel": "ApmEpic",
+          "sourceField": "id",
+          "targetModel": "ApmIssue",
+          "targetField": "epicId",
+          "throughModel": null,
+          "description": "The issues that make up this epic."
+        }
+      ]
+    },
+    {
+      "name": "ApmIssue",
+      "title": "Issue",
+      "description": "An actionable item such as a bug, feature, or task.",
+      "domainName": "Rapider Project & Portfolio Suite",
+      "domainKey": "APM",
+      "datatableName": "ApmIssue",
+      "dataTableName": "ApmIssue",
+      "sqlTableName": "apm_issue",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ title }} - {{ status }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "title",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "title",
+            "projectId",
+            "type"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "description",
+            "status"
+          ],
+          "additionalPrompt": "If the issue type is 'Bug', ensure a description is provided detailing the steps to reproduce.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "Priority must be one of: Low, Medium, High, Critical."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "projectId"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "When updating status to 'Done', ensure all required fields are filled.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "Cannot change type from Bug to Feature without user confirmation.",
+          "restrictedStates": [
+            {
+              "description": "Cannot modify closed issues.",
+              "where": {}
+            }
+          ]
+        },
+        "entityRead": {
+          "defaultPageSize": 25,
+          "defaultContextLimit": 15,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Group issues by status and priority when summarizing."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete issues that are currently In Progress.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "projectId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "epicId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "sprintId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "storyPoints",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "labelIds",
+          "type": "array",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": true
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        },
+        {
+          "name": "assigneeId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "reporterId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "project",
+          "type": "belongsTo",
+          "sourceModel": "ApmIssue",
+          "sourceField": "projectId",
+          "targetModel": "ApmProject",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The project this issue belongs to."
+        },
+        {
+          "name": "epic",
+          "type": "belongsTo",
+          "sourceModel": "ApmIssue",
+          "sourceField": "epicId",
+          "targetModel": "ApmEpic",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The epic this issue belongs to."
+        },
+        {
+          "name": "sprint",
+          "type": "belongsTo",
+          "sourceModel": "ApmIssue",
+          "sourceField": "sprintId",
+          "targetModel": "ApmSprint",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The sprint this issue is assigned to."
+        },
+        {
+          "name": "labels",
+          "type": "referencesMany",
+          "sourceModel": "ApmIssue",
+          "sourceField": "labelIds",
+          "targetModel": "ApmLabel",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "Labels categorized for this issue."
+        }
+      ]
+    },
+    {
+      "name": "ApmProject",
+      "title": "Project",
+      "description": "Represents a high-level initiative or body of work containing epics, sprints, and issues.",
+      "domainName": "Rapider Project & Portfolio Suite",
+      "domainKey": "APM",
+      "datatableName": "ApmProject",
+      "dataTableName": "ApmProject",
+      "sqlTableName": "apm_project",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "name"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "description"
+          ],
+          "additionalPrompt": "When creating a project, ensure the name is concise and professional.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "Project name must be unique."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [],
+          "autoGenerateFields": [],
+          "additionalPrompt": "Do not change the project name unless explicitly requested.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "Ensure status transitions make logical sense.",
+          "restrictedStates": [
+            {
+              "description": "Cannot modify archived projects.",
+              "where": {}
+            }
+          ]
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 10,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Summarize project progress by counting related open vs closed issues if possible."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [
+            "epics",
+            "sprints",
+            "issues"
+          ],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete active projects.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "epics",
+          "type": "hasMany",
+          "sourceModel": "ApmProject",
+          "sourceField": "id",
+          "targetModel": "ApmEpic",
+          "targetField": "projectId",
+          "throughModel": null,
+          "description": "A project can have multiple epics."
+        },
+        {
+          "name": "sprints",
+          "type": "hasMany",
+          "sourceModel": "ApmProject",
+          "sourceField": "id",
+          "targetModel": "ApmSprint",
+          "targetField": "projectId",
+          "throughModel": null,
+          "description": "A project can have multiple sprints."
+        },
+        {
+          "name": "issues",
+          "type": "hasMany",
+          "sourceModel": "ApmProject",
+          "sourceField": "id",
+          "targetModel": "ApmIssue",
+          "targetField": "projectId",
+          "throughModel": null,
+          "description": "A project contains multiple issues."
+        }
+      ]
+    },
+    {
+      "name": "ApmSprint",
+      "title": "Sprint",
+      "description": "A time-boxed iteration for a team to complete a set amount of work.",
+      "domainName": "Rapider Project & Portfolio Suite",
+      "domainKey": "APM",
+      "datatableName": "ApmSprint",
+      "dataTableName": "ApmSprint",
+      "sqlTableName": "apm_sprint",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "goal"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "name",
+            "projectId",
+            "startDate",
+            "endDate"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "goal"
+          ],
+          "additionalPrompt": "Ensure sprint dates do not overlap with existing active sprints in the same project.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "End date must be after start date."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "projectId"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "If completing a sprint, ask the user what to do with incomplete issues.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "End date must be after start date.",
+          "restrictedStates": [
+            {
+              "description": "Cannot modify completed sprints.",
+              "where": {}
+            }
+          ]
+        },
+        "entityRead": {
+          "defaultPageSize": 10,
+          "defaultContextLimit": 5,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Highlight the sprint goal and days remaining when summarizing an active sprint."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete active sprints.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "projectId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "goal",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "startDate",
+          "type": "date",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "endDate",
+          "type": "date",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "project",
+          "type": "belongsTo",
+          "sourceModel": "ApmSprint",
+          "sourceField": "projectId",
+          "targetModel": "ApmProject",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The project this sprint belongs to."
+        },
+        {
+          "name": "issues",
+          "type": "hasMany",
+          "sourceModel": "ApmSprint",
+          "sourceField": "id",
+          "targetModel": "ApmIssue",
+          "targetField": "sprintId",
+          "throughModel": null,
+          "description": "The issues assigned to this sprint."
+        }
+      ]
+    },
+    {
+      "name": "CrmContact",
+      "title": "Contact",
+      "description": "Represents an individual person, usually associated with an Account.",
+      "domainName": "Rapider CRM Suite",
+      "domainKey": "CRM",
+      "datatableName": "CrmContact",
+      "dataTableName": "CrmContact",
+      "sqlTableName": "crm_contact",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ firstName }} {{ lastName }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "firstName",
+          "lastName",
+          "email",
+          "jobTitle"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "firstName",
+            "lastName",
+            "accountId"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [],
+          "additionalPrompt": "Always link a contact to an account if mentioned.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "Email must be a valid format if provided."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 15,
+          "hiddenFields": [],
+          "maskedFields": [
+            "phone"
+          ],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "firstName",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "lastName",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "fullName",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "phoneE164",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "jobSeniority",
+          "type": "string",
+          "description": "Allowed values: C_SUITE, VP, DIRECTOR, MANAGER, IC",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "C_SUITE",
+            "VP",
+            "DIRECTOR",
+            "MANAGER",
+            "IC"
+          ],
+          "options": [
+            "C_SUITE",
+            "VP",
+            "DIRECTOR",
+            "MANAGER",
+            "IC"
+          ]
+        },
+        {
+          "name": "buyingRole",
+          "type": "string",
+          "description": "Allowed values: ECONOMIC_BUYER, CHAMPION, EVALUATOR, PROCUREMENT, END_USER",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "ECONOMIC_BUYER",
+            "CHAMPION",
+            "EVALUATOR",
+            "PROCUREMENT",
+            "END_USER"
+          ],
+          "options": [
+            "ECONOMIC_BUYER",
+            "CHAMPION",
+            "EVALUATOR",
+            "PROCUREMENT",
+            "END_USER"
+          ]
+        },
+        {
+          "name": "portalUserId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "preferredLanguage",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "timezone",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "marketingConsentStatus",
+          "type": "string",
+          "description": "Allowed values: OPTED_IN, OPTED_OUT, UNSET",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "OPTED_IN",
+            "OPTED_OUT",
+            "UNSET"
+          ],
+          "options": [
+            "OPTED_IN",
+            "OPTED_OUT",
+            "UNSET"
+          ]
+        },
+        {
+          "name": "dncStatus",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Allowed values: ACTIVE, INACTIVE, BOUNCED, SUPPRESSED",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "ACTIVE",
+            "INACTIVE",
+            "BOUNCED",
+            "SUPPRESSED"
+          ],
+          "options": [
+            "ACTIVE",
+            "INACTIVE",
+            "BOUNCED",
+            "SUPPRESSED"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "company",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "account",
+          "type": "belongsTo",
+          "sourceModel": "CrmContact",
+          "sourceField": "accountId",
+          "targetModel": "CrmAccount",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The account this contact is associated with."
+        },
+        {
+          "name": "opportunities",
+          "type": "hasMany",
+          "sourceModel": "CrmContact",
+          "sourceField": "id",
+          "targetModel": "CrmOpportunity",
+          "targetField": "primaryContactId",
+          "throughModel": null,
+          "description": "Opportunities where this contact is the primary stakeholder."
+        },
+        {
+          "name": "ownerEmployee",
+          "type": "belongsTo",
+          "sourceModel": "CrmContact",
+          "sourceField": "ownerEmployeeId",
+          "targetModel": "HrEmployee",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "CrmContact ownerEmployee foreign key link to HrEmployee."
+        },
+        {
+          "name": "sourceCampaign",
+          "type": "belongsTo",
+          "sourceModel": "CrmContact",
+          "sourceField": "sourceCampaignId",
+          "targetModel": "MktCampaign",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "CrmContact sourceCampaign foreign key link to MktCampaign."
+        }
+      ]
+    },
+    {
+      "name": "DevFeatureFlag",
+      "title": "Feature Flag",
+      "description": "When `killSwitchEngaged == true`, evaluation deterministically returns `defaultOffValueJson` (`0ms` override) regardless of `rolloutPct`.",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevFeatureFlag",
+      "dataTableName": "DevFeatureFlag",
+      "sqlTableName": "dev_feature_flag",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Feature Flag, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "flagKey",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "flagName",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "description": "Allowed values: STAGING, PRODUCTION",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "STAGING",
+            "PRODUCTION"
+          ],
+          "options": [
+            "STAGING",
+            "PRODUCTION"
+          ]
+        },
+        {
+          "name": "valueType",
+          "type": "string",
+          "description": "Allowed values: BOOLEAN, JSON_CONFIG",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "BOOLEAN",
+            "JSON_CONFIG"
+          ],
+          "options": [
+            "BOOLEAN",
+            "JSON_CONFIG"
+          ]
+        },
+        {
+          "name": "defaultOffValueJson",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "rolloutPct",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "killSwitchEngaged",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        },
+        {
+          "name": "rolledOut100At",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "cleanupStatus",
+          "type": "string",
+          "description": "Allowed values: NONE, STALE_CLEANUP_DUE, CLEANUP_ISSUE_OPEN, RETIRED",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "NONE",
+            "STALE_CLEANUP_DUE",
+            "CLEANUP_ISSUE_OPEN",
+            "RETIRED"
+          ],
+          "options": [
+            "NONE",
+            "STALE_CLEANUP_DUE",
+            "CLEANUP_ISSUE_OPEN",
+            "RETIRED"
+          ]
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "Optional experiment",
+          "type": "belongsTo",
+          "sourceModel": "DevFeatureFlag",
+          "sourceField": "Optional experimentId",
+          "targetModel": "MktExpExperiment",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "DevFeatureFlag Optional experiment foreign key link to MktExpExperiment."
+        }
+      ]
+    },
+    {
+      "name": "HrDepartment",
+      "title": "Department",
+      "description": "Organizational units within the company.",
+      "domainName": "Rapider HR & Talent Suite",
+      "domainKey": "HR",
+      "datatableName": "HrDepartment",
+      "dataTableName": "HrDepartment",
+      "sqlTableName": "hr_department",
+      "isolationScope": "ENTERPRISE_SHARED_WITH_CONFIDENTIAL_VAULTS",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "code",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "name"
+          ],
+          "immutableFields": [],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "description"
+          ],
+          "additionalPrompt": "Ensure code is short uppercase.",
+          "requireUserConfirmation": false
+        },
+        "entityItemUpdate": {
+          "immutableFields": [],
+          "autoGenerateFields": [],
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "Department cannot be its own parent."
+        },
+        "entityRead": {
+          "defaultPageSize": 50,
+          "defaultContextLimit": 100
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "headId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "parentDepartmentId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "legalEntityId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "costCenterCode",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "head",
+          "type": "belongsTo",
+          "sourceModel": "HrDepartment",
+          "sourceField": "headId",
+          "targetModel": "HrEmployee",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "Employee who heads this department."
+        },
+        {
+          "name": "parentDepartment",
+          "type": "belongsTo",
+          "sourceModel": "HrDepartment",
+          "sourceField": "parentDepartmentId",
+          "targetModel": "HrDepartment",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "Parent department in the organizational hierarchy."
+        },
+        {
+          "name": "subDepartments",
+          "type": "hasMany",
+          "sourceModel": "HrDepartment",
+          "sourceField": "id",
+          "targetModel": "HrDepartment",
+          "targetField": "parentDepartmentId",
+          "throughModel": null,
+          "description": "Sub-departments under this department."
+        },
+        {
+          "name": "employees",
+          "type": "hasMany",
+          "sourceModel": "HrDepartment",
+          "sourceField": "id",
+          "targetModel": "HrEmployee",
+          "targetField": "departmentId",
+          "throughModel": null,
+          "description": "Employees in this department."
+        },
+        {
+          "name": "positions",
+          "type": "hasMany",
+          "sourceModel": "HrDepartment",
+          "sourceField": "id",
+          "targetModel": "HrPosition",
+          "targetField": "departmentId",
+          "throughModel": null,
+          "description": "Positions in this department."
+        }
+      ]
+    },
+    {
+      "name": "SupSlaPolicy",
+      "title": "SlaPolicy",
+      "description": "Service Level Agreement policies defining resolution time targets.",
+      "domainName": "Rapider Customer Support Suite",
+      "domainKey": "SUP",
+      "datatableName": "SupSlaPolicy",
+      "dataTableName": "SupSlaPolicy",
+      "sqlTableName": "sup_sla_policy",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "name",
+            "resolutionTimeHours",
+            "priorityLevel"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [],
+          "additionalPrompt": "Ensure resolution time is a positive number.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "Priority level must be valid (Low, Medium, High, Urgent)."
+        },
+        "entityItemUpdate": {
+          "immutableFields": [],
+          "autoGenerateFields": [],
+          "additionalPrompt": "Warn user if changing SLA times for active policies.",
+          "requireUserConfirmation": true,
+          "customValidationPrompt": "Resolution time must remain positive.",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 10,
+          "defaultContextLimit": 5,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Group policies by priority level."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete an SLA policy currently attached to active tickets.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "resolutionTimeHours",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "priorityLevel",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "tickets",
+          "type": "hasMany",
+          "sourceModel": "SupSlaPolicy",
+          "sourceField": "id",
+          "targetModel": "SupTicket",
+          "targetField": "slaPolicyId",
+          "throughModel": null,
+          "description": "Tickets governed by this SLA policy."
+        }
+      ]
+    },
+    {
+      "name": "SupTicket",
+      "title": "Case",
+      "description": "Represents a customer support issue or ticket.",
+      "domainName": "Rapider Customer Support Suite",
+      "domainKey": "SUP",
+      "datatableName": "SupTicket",
+      "dataTableName": "SupTicket",
+      "sqlTableName": "sup_ticket",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ subject }} - {{ status }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "subject",
+          "description"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "subject",
+            "accountId"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "status",
+            "priority"
+          ],
+          "additionalPrompt": "Set priority to High if words like 'urgent' or 'critical' are used.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "accountId"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": [
+            {
+              "description": "Cannot modify closed cases.",
+              "where": {}
+            }
+          ]
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [],
+          "maskedFields": [],
+          "additionalPrompt": "Always list critical cases first."
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": [
+            {
+              "description": "Cannot delete resolved cases.",
+              "where": {}
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "contactId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "ticketNumber",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "description": "Allowed values: PORTAL, EMAIL, CHAT, VOICE, FIELD_SERVICE, SOCIAL, API",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "enumValues": [
+            "PORTAL",
+            "EMAIL",
+            "CHAT",
+            "VOICE",
+            "FIELD_SERVICE",
+            "SOCIAL",
+            "API"
+          ],
+          "options": [
+            "PORTAL",
+            "EMAIL",
+            "CHAT",
+            "VOICE",
+            "FIELD_SERVICE",
+            "SOCIAL",
+            "API"
+          ]
+        },
+        {
+          "name": "queueId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "referenceModel": "SupQueue",
+          "referenceField": "id"
+        },
+        {
+          "name": "assetId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "referenceModel": "OpsOperationsAsset",
+          "referenceField": "id"
+        },
+        {
+          "name": "firstResponseDueAt",
+          "type": "datetime",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "resolutionDueAt",
+          "type": "datetime",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "csatScore",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "assigneeId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "slaPolicyId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "account",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "accountId",
+          "targetModel": "CrmAccount",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The account this case is associated with."
+        },
+        {
+          "name": "contact",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "contactId",
+          "targetModel": "CrmContact",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "The individual contact associated with this case."
+        },
+        {
+          "name": "queue",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "queueId",
+          "targetModel": "SupQueue",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "SupTicket queue foreign key link to SupQueue."
+        },
+        {
+          "name": "assigneeEmployee",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "assigneeEmployeeId",
+          "targetModel": "HrEmployee",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "SupTicket assigneeEmployee foreign key link to HrEmployee."
+        },
+        {
+          "name": "slaPolicy",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "slaPolicyId",
+          "targetModel": "SupSlaPolicy",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "SupTicket slaPolicy foreign key link to SupSlaPolicy."
+        },
+        {
+          "name": "asset",
+          "type": "belongsTo",
+          "sourceModel": "SupTicket",
+          "sourceField": "assetId",
+          "targetModel": "OpsOperationsAsset",
+          "targetField": "id",
+          "throughModel": null,
+          "description": "SupTicket asset foreign key link to OpsOperationsAsset."
+        }
+      ]
+    },
+    {
+      "name": "DevErrorService",
+      "title": "Error Service",
+      "description": "`PYTHON` \\",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevErrorService",
+      "dataTableName": "DevErrorService",
+      "sqlTableName": "dev_error_service",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name",
+          "slug"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Error Service, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "platformType",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevErrorIssue",
+      "title": "Error Issue",
+      "description": "`WARNING` \\",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevErrorIssue",
+      "dataTableName": "DevErrorIssue",
+      "sqlTableName": "dev_error_issue",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ title }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "title"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Error Issue, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "shortId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "fingerprintHash",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "exceptionType",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "culprit",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevErrorEvent",
+      "title": "Error Event",
+      "description": "**Append-only immutable evidence** once persisted after PII scrubbing; raw unredacted secrets are never written to disk or event streams.",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevErrorEvent",
+      "dataTableName": "DevErrorEvent",
+      "sqlTableName": "dev_error_event",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ id }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "id"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Error Event, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "eventId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "issueId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "releaseVersion",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "occurredAt",
+          "type": "datetime",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "symbolicatedFrames",
+          "type": "array",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": true
+        },
+        {
+          "name": "breadcrumbs",
+          "type": "array",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": true
+        },
+        {
+          "name": "tags",
+          "type": "object",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "runtimeContext",
+          "type": "object",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "activeFlagVariants",
+          "type": "object",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "traceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "spanId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "scrubbingApplied",
+          "type": "array",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": true
+        },
+        {
+          "name": "userFeedbackNote",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevSymbolArtifact",
+      "title": "Symbol Artifact",
+      "description": "`PROGUARD` \\",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevSymbolArtifact",
+      "dataTableName": "DevSymbolArtifact",
+      "sqlTableName": "dev_symbol_artifact",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ id }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "id"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Symbol Artifact, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "releaseVersion",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "artifactType",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevReleaseHealth",
+      "title": "Release Health",
+      "description": "`CRITICAL_BREACH`), `deployedAt` (DateTime), `version` (Integer)",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevReleaseHealth",
+      "dataTableName": "DevReleaseHealth",
+      "sqlTableName": "dev_release_health",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ id }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "id"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Release Health, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "releaseVersion",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "totalSessions",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "crashedSessions",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "erroredSessions",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "totalUsers",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "crashedUsers",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "crashFreeSessionRate",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "crashFreeUserRate",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "targetStabilityThreshold",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "criticalStabilityThreshold",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "gateStatus",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevGroupingRule",
+      "title": "Grouping Rule",
+      "description": "Evaluated deterministically in ascending `priorityOrder` during ingestion; applies prospectively to incoming events without rewriting historical event hashes unless explicit re-group command runs.",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevGroupingRule",
+      "dataTableName": "DevGroupingRule",
+      "sqlTableName": "dev_grouping_rule",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Grouping Rule, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "priorityOrder",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "matchExpression",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "targetFingerprintTemplate",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        },
+        {
+          "name": "matchedCount",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevOwnershipRule",
+      "title": "Ownership Rule",
+      "description": "`TAG` \\",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevOwnershipRule",
+      "dataTableName": "DevOwnershipRule",
+      "sqlTableName": "dev_ownership_rule",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ id }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "id"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Ownership Rule, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "priorityOrder",
+          "type": "number",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "matcherType",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    },
+    {
+      "name": "DevErrorAlertRule",
+      "title": "Error Alert Rule",
+      "description": "`VELOCITY_SPIKE` \\",
+      "domainName": "Rapider Developer Suite",
+      "domainKey": "DEV",
+      "datatableName": "DevErrorAlertRule",
+      "dataTableName": "DevErrorAlertRule",
+      "sqlTableName": "dev_error_alert_rule",
+      "isolationScope": "ENTERPRISE_SHARED",
+      "titleFieldTemplate": "{{ name }}",
+      "scope": {
+        "where": {}
+      },
+      "aiAgentConfig": {
+        "vectorSearchFields": [
+          "name"
+        ],
+        "planning": {
+          "availableOperations": [
+            "create",
+            "update",
+            "read",
+            "delete"
+          ]
+        },
+        "entityItemCreate": {
+          "requiredFields": [
+            "id"
+          ],
+          "immutableFields": [
+            "isDeleted"
+          ],
+          "requiredRelations": [],
+          "autoGenerateFields": [
+            "id"
+          ],
+          "additionalPrompt": "When creating Error Alert Rule, ensure required attributes are populated.",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": ""
+        },
+        "entityItemUpdate": {
+          "immutableFields": [
+            "id"
+          ],
+          "autoGenerateFields": [],
+          "additionalPrompt": "",
+          "requireUserConfirmation": false,
+          "customValidationPrompt": "",
+          "restrictedStates": []
+        },
+        "entityRead": {
+          "defaultPageSize": 20,
+          "defaultContextLimit": 30,
+          "hiddenFields": [
+            "isDeleted"
+          ],
+          "maskedFields": [],
+          "additionalPrompt": ""
+        },
+        "entityItemDelete": {
+          "requireCaptchaConfirmation": true,
+          "cascadingRelations": [],
+          "restrictedStates": []
+        }
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Primary key UUID.",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "isHidden": false,
+          "isArray": false,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "serviceId",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "triggerType",
+          "type": "string",
+          "description": "",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Lifecycle or record status.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false
+        },
+        {
+          "name": "isDeleted",
+          "type": "boolean",
+          "description": "Soft deletion flag.",
+          "isRequired": false,
+          "isHidden": false,
+          "isArray": false,
+          "default": false
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "webPages": [
+    {
+      "name": "Error Pulse & Stability Overview",
+      "route": "dashboard",
+      "htmlFilePath": "pages/dashboard/dashboard.html",
+      "title": "Error Pulse & Stability Overview",
+      "group": "Overview & Triage",
+      "icon": "fas fa-home",
+      "displayInMenu": true,
+      "order": 1,
+      "developmentDetails": "KPI cards (countSWR/findSWR) for Unresolved Issues, 24h Events, Crash-Free Session %, Regressions; top noisy services chart; recent critical alerts list."
+    },
+    {
+      "name": "Issue Triage Inbox",
+      "route": "issues",
+      "htmlFilePath": "pages/issues/issues.html",
+      "title": "Issue Triage Inbox",
+      "group": "Overview & Triage",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 2,
+      "developmentDetails": "Dual List + <rapider-kanban> Triage Board (UNRESOLVED, FOR_REVIEW, RESOLVED, IGNORED); #activeFilterTagsBar with Clear all; clickable primary issue title (issue-detail); bulk Resolve/Snooze/Merge toolbar."
+    },
+    {
+      "name": "Error Explorer & Job Monitors",
+      "route": "analytics",
+      "htmlFilePath": "pages/analytics/analytics.html",
+      "title": "Error Explorer & Job Monitors",
+      "group": "Overview & Triage",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 3,
+      "developmentDetails": "Tag facet distribution explorer, error velocity time-series charts, cron/scheduled job check-in status table (AET-024), and Save-to-Notebook export."
+    },
+    {
+      "name": "Release Health & Stability",
+      "route": "releases",
+      "htmlFilePath": "pages/releases/releases.html",
+      "title": "Release Health & Stability",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 4,
+      "developmentDetails": "Version comparison matrix displaying Decimal128 User & Session Stability Scores, adoption curves, new issues count, and target/critical gate badges; clicks through to release-detail."
+    },
+    {
+      "name": "Monitored Services & DSNs",
+      "route": "services",
+      "htmlFilePath": "pages/services/services.html",
+      "title": "Monitored Services & DSNs",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 5,
+      "developmentDetails": "Registry of DevErrorService apps (Web, API, iOS, Android), DSN copy widget, inbound quota meter, Edit (icon + text) and Delete (icon-only) row actions."
+    },
+    {
+      "name": "Debug Symbols & Source Maps",
+      "route": "symbols",
+      "htmlFilePath": "pages/symbols/symbols.html",
+      "title": "Debug Symbols & Source Maps",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 6,
+      "developmentDetails": "Release-scoped artifact table (DevSymbolArtifact) showing source map / dSYM / ProGuard bundle status, symbolication health check, and Platform Files upload trigger."
+    },
+    {
+      "name": "Alert Rules & Escalations",
+      "route": "alerts",
+      "htmlFilePath": "pages/alerts/alerts.html",
+      "title": "Alert Rules & Escalations",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 7,
+      "developmentDetails": "DevErrorAlertRule table for first-seen, regression, velocity-spike, and stability-drop triggers with webhook, Home WorkItem, and <rapider-phone-input> SMS escalation targets."
+    },
+    {
+      "name": "Fingerprinting & Ownership Rules",
+      "route": "grouping-ownership",
+      "htmlFilePath": "pages/grouping-ownership/grouping-ownership.html",
+      "title": "Fingerprinting & Ownership Rules",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 8,
+      "developmentDetails": "Tabbed governance editor for declarative DevGroupingRule fingerprint expressions and CODEOWNERS-style DevOwnershipRule auto-assignment mappings."
+    },
+    {
+      "name": "PII Scrubbing & Spike Quotas",
+      "route": "privacy-scrubbing",
+      "htmlFilePath": "pages/privacy-scrubbing/privacy-scrubbing.html",
+      "title": "PII Scrubbing & Spike Quotas",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 9,
+      "developmentDetails": "Workspace & per-service data redaction rules (credit cards, tokens, custom regexes, IP masking), inbound browser/bot filters, and immutable policy audit trail."
+    },
+    {
+      "name": "Issue Diagnostic & Stack Trace",
+      "route": "issue-detail",
+      "htmlFilePath": "pages/issue-detail/issue-detail.html",
+      "title": "Issue Diagnostic & Stack Trace",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 10,
+      "developmentDetails": "Symbolicated stack frame accordion (in-app vs. framework toggle), breadcrumb timeline, tags/flags context, DOM replay viewer link, ApmIssue/SupTicket linker, and AI Seer thread (projectChannelMessage)."
+    },
+    {
+      "name": "Release Stability Breakdown",
+      "route": "release-detail",
+      "htmlFilePath": "pages/release-detail/release-detail.html",
+      "title": "Release Stability Breakdown",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 11,
+      "developmentDetails": "Version deep-dive with suspect commits list, new vs. regressed issues introduced in this release, environment adoption breakdown, and rollout gate status."
+    },
+    {
+      "name": "Create / Edit Monitored Service",
+      "route": "service-drawer",
+      "htmlFilePath": "pages/service-drawer/service-drawer.html",
+      "title": "Create / Edit Monitored Service",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 12,
+      "developmentDetails": "Sliding form drawer for DevErrorService creation/editing; enforces try/catch/finally button state reset, SWR cache invalidation, broadcast, and auto-close on Save/Cancel."
+    }
+  ],
+  "workflows": [],
+  "variables": [],
+  "tools": [],
+  "pages": [
+    {
+      "name": "Error Pulse & Stability Overview",
+      "route": "dashboard",
+      "htmlFilePath": "pages/dashboard/dashboard.html",
+      "title": "Error Pulse & Stability Overview",
+      "group": "Overview & Triage",
+      "icon": "fas fa-home",
+      "displayInMenu": true,
+      "order": 1,
+      "developmentDetails": "KPI cards (countSWR/findSWR) for Unresolved Issues, 24h Events, Crash-Free Session %, Regressions; top noisy services chart; recent critical alerts list."
+    },
+    {
+      "name": "Issue Triage Inbox",
+      "route": "issues",
+      "htmlFilePath": "pages/issues/issues.html",
+      "title": "Issue Triage Inbox",
+      "group": "Overview & Triage",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 2,
+      "developmentDetails": "Dual List + <rapider-kanban> Triage Board (UNRESOLVED, FOR_REVIEW, RESOLVED, IGNORED); #activeFilterTagsBar with Clear all; clickable primary issue title (issue-detail); bulk Resolve/Snooze/Merge toolbar."
+    },
+    {
+      "name": "Error Explorer & Job Monitors",
+      "route": "analytics",
+      "htmlFilePath": "pages/analytics/analytics.html",
+      "title": "Error Explorer & Job Monitors",
+      "group": "Overview & Triage",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 3,
+      "developmentDetails": "Tag facet distribution explorer, error velocity time-series charts, cron/scheduled job check-in status table (AET-024), and Save-to-Notebook export."
+    },
+    {
+      "name": "Release Health & Stability",
+      "route": "releases",
+      "htmlFilePath": "pages/releases/releases.html",
+      "title": "Release Health & Stability",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 4,
+      "developmentDetails": "Version comparison matrix displaying Decimal128 User & Session Stability Scores, adoption curves, new issues count, and target/critical gate badges; clicks through to release-detail."
+    },
+    {
+      "name": "Monitored Services & DSNs",
+      "route": "services",
+      "htmlFilePath": "pages/services/services.html",
+      "title": "Monitored Services & DSNs",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 5,
+      "developmentDetails": "Registry of DevErrorService apps (Web, API, iOS, Android), DSN copy widget, inbound quota meter, Edit (icon + text) and Delete (icon-only) row actions."
+    },
+    {
+      "name": "Debug Symbols & Source Maps",
+      "route": "symbols",
+      "htmlFilePath": "pages/symbols/symbols.html",
+      "title": "Debug Symbols & Source Maps",
+      "group": "Releases & Services",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 6,
+      "developmentDetails": "Release-scoped artifact table (DevSymbolArtifact) showing source map / dSYM / ProGuard bundle status, symbolication health check, and Platform Files upload trigger."
+    },
+    {
+      "name": "Alert Rules & Escalations",
+      "route": "alerts",
+      "htmlFilePath": "pages/alerts/alerts.html",
+      "title": "Alert Rules & Escalations",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 7,
+      "developmentDetails": "DevErrorAlertRule table for first-seen, regression, velocity-spike, and stability-drop triggers with webhook, Home WorkItem, and <rapider-phone-input> SMS escalation targets."
+    },
+    {
+      "name": "Fingerprinting & Ownership Rules",
+      "route": "grouping-ownership",
+      "htmlFilePath": "pages/grouping-ownership/grouping-ownership.html",
+      "title": "Fingerprinting & Ownership Rules",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 8,
+      "developmentDetails": "Tabbed governance editor for declarative DevGroupingRule fingerprint expressions and CODEOWNERS-style DevOwnershipRule auto-assignment mappings."
+    },
+    {
+      "name": "PII Scrubbing & Spike Quotas",
+      "route": "privacy-scrubbing",
+      "htmlFilePath": "pages/privacy-scrubbing/privacy-scrubbing.html",
+      "title": "PII Scrubbing & Spike Quotas",
+      "group": "Governance & Rules",
+      "icon": "fas fa-code",
+      "displayInMenu": true,
+      "order": 9,
+      "developmentDetails": "Workspace & per-service data redaction rules (credit cards, tokens, custom regexes, IP masking), inbound browser/bot filters, and immutable policy audit trail."
+    },
+    {
+      "name": "Issue Diagnostic & Stack Trace",
+      "route": "issue-detail",
+      "htmlFilePath": "pages/issue-detail/issue-detail.html",
+      "title": "Issue Diagnostic & Stack Trace",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 10,
+      "developmentDetails": "Symbolicated stack frame accordion (in-app vs. framework toggle), breadcrumb timeline, tags/flags context, DOM replay viewer link, ApmIssue/SupTicket linker, and AI Seer thread (projectChannelMessage)."
+    },
+    {
+      "name": "Release Stability Breakdown",
+      "route": "release-detail",
+      "htmlFilePath": "pages/release-detail/release-detail.html",
+      "title": "Release Stability Breakdown",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 11,
+      "developmentDetails": "Version deep-dive with suspect commits list, new vs. regressed issues introduced in this release, environment adoption breakdown, and rollout gate status."
+    },
+    {
+      "name": "Create / Edit Monitored Service",
+      "route": "service-drawer",
+      "htmlFilePath": "pages/service-drawer/service-drawer.html",
+      "title": "Create / Edit Monitored Service",
+      "group": "(Hidden)",
+      "icon": "fas fa-code",
+      "displayInMenu": false,
+      "order": 12,
+      "developmentDetails": "Sliding form drawer for DevErrorService creation/editing; enforces try/catch/finally button state reset, SWR cache invalidation, broadcast, and auto-close on Save/Cancel."
+    }
+  ]
+}
